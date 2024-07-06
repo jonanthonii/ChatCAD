@@ -1,7 +1,7 @@
 ![image](https://github.com/jonanthonii/ChatCAD/assets/80728575/309ad23c-ad7f-4d44-bdff-1cfcbb9a7d6a)  
 
-An interactive chat that enables all users to chat in general with real-time message reflection.
-This project is ready to be modified for everyone.
+An interactive chat that enables all users to chat in general with real-time message reflection.  
+This project is ready to be modified for everyone for all purposes.
 
 
 ### BUCKET LIST FEATURES:
