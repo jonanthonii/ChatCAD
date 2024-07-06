@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+body{
+    background-color: #ffae00;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+body.fade-out{
+    opacity: 0;
+}
+
+.header{
+    margin: 150px 0px 100px 0px;
+    text-align: center;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    max-width: 100%;
+}
+
+.header h1{
+    margin: -60px 0px;
+    font-size: 80px;
+    color: #ffffff;
+    font-weight: 800;
+    font-style: italic;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.header h6{
+    margin: 30px 0px;
+    color: #1f1f1f;
+    font-size: 15px;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.enclosed{
+    width: 900px;
+}
+
+.labels{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.labels input[type="text"]{
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    width: 100%;
+    margin: 0px 3px;
+    cursor: default;
+}
+
+.labels input:focus{
+    outline: none;
+}
+
+.labels input[type="text"]::selection {
+    background: transparent;
+}
+
+.inputs input, .inputs select{
+    border-radius: 15px;
+    color: #1f1f1f;
+    border: solid 1px #ffffff;
+    background-color: #ffffff;
+    padding: 8px;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    margin: 0px 3px;
+}
+
+.inputs button{
+    border-radius: 25px;
+    border: solid 1px #1f1f1f;
+    padding: 8px;
+    justify-content: center;
+    background-color: #573b01;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 250px;
+    font-size: 18px;
+}
+
+.inputs button:hover{
+    color: #ffffff;
+    background-color: #835a0a;
+}
+
+.toregistration{
+    margin: 50px;
+    font-size: 18px;
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+}
+
+.toregistration button{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #3a2701;
+    background-color: #ffae00;
+    justify-content: center;
+    border: 2px solid #3a2701;
+    border-radius: 15px;
+    padding: 10px 10px 10px 0px;
+}
+
+.toregistration i{
+    color: #3a2701;
+    margin: 0px 8px;
+    font-size: 20px;
+}
+
+.toregistration button:hover, .toregistration button:hover i{
+    background-color: #3a2701;
+    color: #ffffff;
+}
