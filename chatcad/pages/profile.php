@@ -98,10 +98,17 @@ function generateFilename($extension) {
         <div class="profile" id="profile">
             <div class="picture">
                 <?php
-                if($_SESSION['current_employeepp'] == 'male.png' || $_SESSION['current_employeepp'] == 'female.png'){
-                    echo '<img name="currentpic" id="currentpic" class="picture" style="z-index: 2" src="../users/' . $_SESSION['current_employeepp'] . '">';
+
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE employee_id = :employee_id");
+                $stmt->bindParam(':employee_id', $_SESSION['current_employeeid']);
+                $stmt->execute();
+
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if($row['profile_pic'] == 'male.png' || $row['profile_pic'] == 'female.png'){
+                    echo '<img name="currentpic" id="currentpic" class="picture" style="z-index: 2" src="../users/' . $row['profile_pic'] . '">';
                 }else{
-                    echo '<img name="currentpic" id="currentpic" class="picture" style="z-index: 2" src="../users/' . $_SESSION['current_employeeid'] . '/' . $_SESSION['current_employeepp'] . '">';
+                    echo '<img name="currentpic" id="currentpic" class="picture" style="z-index: 2" src="../users/' . $row['employee_id'] . '/' . $row['profile_pic'] . '">';
                 }
                 ?>
                 <img name="preselectpic" id="preview" class="picture preview" style="z-index: 1" src="">

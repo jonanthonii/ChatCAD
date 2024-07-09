@@ -386,6 +386,7 @@
     border-radius: 100%;
     margin: 2px 8px;
     border: 2px solid #047700;
+    object-fit: cover;
 }
 
 .offline-user img{
@@ -395,6 +396,7 @@
     margin: 2px 8px;
     border: 2px solid #4e4e4e;
     filter: grayscale(100%);
+    object-fit: cover;
 }
 
 .pp img{
@@ -402,6 +404,7 @@
     height: 38px;
     width: 38px;
     border-radius: 100%;
+    object-fit: cover;
     margin-top: 18px;
 }
 

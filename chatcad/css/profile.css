@@ -98,6 +98,7 @@
     height: 350px;
     border-radius: 100%;
     width: 350px;
+    object-fit: cover;
 }
 
 .edit-text {
@@ -131,6 +132,7 @@
 .preview{
     display: none;
     background-color: #ecebeb;
+    object-fit: cover;
 }
 
 .edit-text i{
