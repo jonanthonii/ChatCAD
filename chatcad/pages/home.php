@@ -100,9 +100,9 @@ if(isset($_POST['send'])){
                                     replyOthers = "<div class='separate'><span class='name'><b>" + row.firstname.toLowerCase() + "</b> replied to themself<b></b></span>" +
                                     "<div class='mensahe'><p class='reply-msg'>" + row.replyto_message + "</p></div>";
                                 } else {
-                                    replyOthers = "<div class='separate'><span class='name'><b>" + row.firstname.toLowerCase() + "</b> replied to <b>" + row.replyto_firstname + "</b></span>" +
+                                    replyOthers = "<div class='separate'><span class='name'><b>" + row.firstname.toLowerCase() + "</b> replied to <b>" + row.replyto_firstname.toLowerCase() + "</b></span>" +
                                     "<div class='mensahe'><p class='reply-msg'>" + row.replyto_message + "</p></div>";
-                                    replySelf = "<div class='separate'><span class='name2'><b>You <span class='name2-ext'>replied to </span>" + row.replyto_firstname + "</b></span>" +
+                                    replySelf = "<div class='separate'><span class='name2'><b>You <span class='name2-ext'>replied to </span>" + row.replyto_firstname.toLowerCase() + "</b></span>" +
                                     "<div class='mensahe2'><p class='reply-msg2'>" + row.replyto_message + "</p></div>";
                                 }
                             } else {
