@@ -147,15 +147,119 @@
 .msgbox-other .name{
     font-weight: 700;
     color: #2c2c2c;
-    text-transform: capitalize;
     font-size: 12px;
-    margin-left: 8px;
+    margin-left: 10px;
 }
 
-.content .name{
+.name2{
+    font-weight: 700;
+    color: #2c2c2c;
+    font-size: 12px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.mensahe{
+    display: flex;
+    align-items: center;
+}
+
+.mensahe2{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.reply-icon{
+    display: none;
+    align-items: center;
+    color: rgb(82, 56, 37);
+    font-weight: bolder;
+    padding: 6px 8px;
+    border-radius: 30px;
+    font-size: 14px;
+    background: #e0e0e0;
+    cursor: pointer;
+}
+
+.reply-txt{
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 3px;
+}
+
+.msgbox-other:hover .reply-icon,
+.msgbox-self:hover .reply-icon{    
+    display: flex;
+}
+
+.reply-box{
+    display: flex;
+    background: #242424;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    align-items: center;
+    color: #f7f7f7;
+    font-size: 12px;
+}
+
+.reply-msg{
+    background-color: #c9c9c9;
+    margin: 3px 6px -8px 10px;
+    border-radius: 15px 15px 15px 0px;
+    padding: 8px 12px;
+    width: fit-content;
+    font-size: 13px;
+}
+
+.reply-msg2{
+    background-color: #c9c9c9;
+    margin: 3px 10px -8px 6px;
+    border-radius: 15px 15px 0px 15px;
+    padding: 8px 12px;
+    width: fit-content;
+    font-size: 13px;
+}
+
+.reply-box h6{
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.reply-box p{
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
+    color: #d4d4d4;
+}
+
+.cancel-reply{
+    border-radius: 100%;
+    border: none;
+    padding: 2px 1px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color:transparent;
+    color: white;
+    margin-right: 5px;
+}
+
+.content .name, .content .name2{
     font-weight: 500;
     color: #2c2c2c;
+}
+
+.name b, .name2 b{
+    font-weight: 500;
     text-transform: capitalize;
+}
+
+.name2 .name2-ext{
+    font-weight: 500;
+    text-transform: lowercase;
 }
 
 .time{
