@@ -106,7 +106,9 @@ if(isset($_POST['send'])){
                                     "<div class='mensahe2'><p class='reply-msg2'>" + row.replyto_message + "</p></div>";
                                 }
                             } else {
-                                replyOthers = "<div class='separate'><span class='name'><b>" + row.firstname.toLowerCase() + "</b></span>";
+                                if(lastmessage !== row.employee_id) {
+                                    replyOthers = "<div class='separate'><span class='name'><b>" + row.firstname.toLowerCase() + "</b></span>";   
+                                }
                             }
 
                             
@@ -283,7 +285,7 @@ if(isset($_POST['send'])){
                     <div class="typebox">
                         <!-- <input type="text" autocomplete="off" name="message" autofocus value="<?php if(isset($_POST['message'])){ echo $_POST['message']; }?>"> -->
                         <button type="submit" id="sendbtn" name="send">Send</button>
-                        <input type="text" autocomplete="off" id="message-input" name="message" autofocus>
+                        <input type="text" autocomplete="off" id="message-input" name="message" autofocus value="<?php if(isset($_POST['message'])){ echo $_POST['message']; }?>">
                     </div>
                 </form>
             </div>
