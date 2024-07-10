@@ -68,6 +68,7 @@ if(isset($_POST['send'])){
                         var currentDate = null;
                         var lastmessage = '';
                         var lastmsgsent = '';
+                        var timeZone = 'Asia/Manila';
 
                         if (data.error) {
                             console.error(data.error);
@@ -75,12 +76,14 @@ if(isset($_POST['send'])){
                         }
 
                         $.each(data, function(index, row) {
-                            var messageDate = new Date(row.sent_date).toISOString().slice(0, 10);
-                            var messageTime = new Date(row.sent_date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                            var messageDate = new Date(row.sent_date + ' UTC');
+                            var options = { timeZone: timeZone, year: 'numeric', month: 'long', day: 'numeric' };
+                            var messageDateLocal = messageDate.toLocaleDateString('en-US', options);
+                            var messageTime = messageDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: timeZone });
 
                             // Check if the date has changed to display the date header
-                            if (currentDate !== messageDate) {
-                                currentDate = messageDate;
+                            if (currentDate !== messageDateLocal) {
+                                currentDate = messageDateLocal;
                                 convo.append("<h2 class='date-header'>" + new Date(currentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + "</h2>");
                             }
 
