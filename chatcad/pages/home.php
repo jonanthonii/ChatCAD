@@ -243,7 +243,7 @@ if(isset($_POST['send'])){
         <ul>
             <li onclick="location.href='home.php'"><i class='bx bxs-home'></i><span class="menu-text">HOME</span></li>
             <li onclick="location.href='profile.php'"><i class='bx bxs-user-circle'></i><span class="menu-text">PROFILE</span></li>
-            <li><i class='bx bxs-cog' ></i><span class="menu-text">SETTINGS</span></li>
+            <li onclick="location.href='settings.php'"><i class='bx bxs-cog'></i><span class="menu-text">SETTINGS</span></li>
             <li onclick="location.href='../logout.php'"><i class='bx bx-log-out'></i><span class="menu-text">LOGOUT</span></li>
         </ul>
     </div>

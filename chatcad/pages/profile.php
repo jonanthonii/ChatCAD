@@ -172,12 +172,16 @@ function generateFilename($extension) {
         <ul>
             <li onclick="location.href='home.php'"><i class='bx bxs-home'></i><span class="menu-text">HOME</span></li>
             <li onclick="location.href='profile.php'"><i class='bx bxs-user-circle'></i><span class="menu-text">PROFILE</span></li>
-            <li><i class='bx bxs-cog' ></i><span class="menu-text">SETTINGS</span></li>
+            <li onclick="location.href='settings.php'"><i class='bx bxs-cog'></i><span class="menu-text">SETTINGS</span></li>
             <li onclick="location.href='../logout.php'"><i class='bx bx-log-out'></i><span class="menu-text">LOGOUT</span></li>
         </ul>
     </div>
 
     <div class="content">
+        <div class="topcontent">
+            <h1>Profile</h1>
+        </div>
+        <div class="body-content">
         <form action="" method="post" enctype="multipart/form-data">
         <div class="profile" id="profile">
             <div class="picture">
@@ -220,6 +224,7 @@ function generateFilename($extension) {
                 <input type="submit" name="submit" value="SAVE CHANGES">
             </div>
         </form>
+        </div>
     </div>
 
 </body>
