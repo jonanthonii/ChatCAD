@@ -79,7 +79,7 @@ if(isset($_POST['send'])){
                         }
 
                         $.each(data, function(index, row) {
-                            var messageDate = new Date(row.sent_date + ' UTC');
+                            var messageDate = new Date(row.sent_date);
                             var options = { timeZone: timeZone, year: 'numeric', month: 'long', day: 'numeric' };
                             var messageDateLocal = messageDate.toLocaleDateString('en-US', options);
                             var messageTime = messageDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: timeZone });
@@ -100,7 +100,7 @@ if(isset($_POST['send'])){
                             var replySelf = "";
 
                             if (row.replyto_id) {
-                                if (row.replyto_firstname == row.firstname) {
+                                if (row.replyto_id == row.sender_id) {
                                     replySelf = "<div class='separate'><span class='name2'><b>You <span class='name2-ext'>replied to yourself</span></b></span>" +
                                     "<div class='mensahe2'><p class='reply-msg2'>" + row.replyto_message + "</p></div>";
                                     replyOthers = "<div class='separate'><span class='name'><b>" + row.firstname.toLowerCase() + "</b> replied to themself<b></b></span>" +
@@ -117,10 +117,7 @@ if(isset($_POST['send'])){
                                 }
                             }
 
-                            
-
-
-                            if (row.fullname !== <?php echo json_encode($_SESSION['current_employeefullname']); ?>) {
+                            if (row.sender_id !== <?php echo json_encode($_SESSION['current_employeeid']); ?>) {
                                 // var profile_picture = "../users/" + (row.profile_pic === "female.png" || row.profile_pic === "male.png" ? row.profile_pic : row.profile_pic);
                                 var profile_picture = row.profile_pic === "female.png" || row.profile_pic === "male.png"
                                 ? "../users/" + row.profile_pic

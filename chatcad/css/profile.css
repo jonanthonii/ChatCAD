@@ -161,35 +161,40 @@
     color: #e7e7e7;
 }
 
-.name input{
-    color: #ffae00;
-    font-size: 35px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+.userinfo{
+    display: block;
     width: 100%;
-    border-style: none;
 }
 
-.username input{
-    color: #222222;
-    font-size: 15px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    border-style: none;
+.fields{
+    border: 2px solid #ffae00;
+    display: grid;
+    padding: 10px;
+    border-radius: 50px;
+    margin: 10px;
 }
 
-.email input{
-    color: #222222;
-    font-size: 15px;
+.legends{
+    width: 100%;
+    border: none;
+    font-size: 12px;
+    margin-left: 15px;
+    color: #d8a027;
+    font-weight: 600;
+}
+
+.name{
+    color: #6e4f0a;
+    font-size: 14px;
+    width: 100%;
     font-weight: 700;
-    display: flex;
     justify-content: center;
     text-align: center;
-    width: 100%;
     border-style: none;
+    text-transform: capitalize;
 }
+
+.name:focus{
+    outline: none;
+}
+

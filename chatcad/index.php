@@ -76,6 +76,8 @@ if(isset($_POST['loginbtn'])){
             if(password_verify($password, $user['password'])){
                 $_SESSION['current_employeeid'] = $username;
                 $_SESSION['current_employeefirst'] = $user['firstname'];
+                $_SESSION['current_employeemiddle'] = $user['middlename'];
+                $_SESSION['current_employeelast'] = $user['lastname'];
                 $_SESSION['current_employeefullname'] = $user['firstname'] . ' ' . $user['lastname'];
                 $_SESSION['current_employeepp'] = $user['profile_pic'];
                 $_SESSION['current_employeebirthdate'] = $user['birthdate'];

@@ -25,6 +25,47 @@ if(!file_exists($uploadDir . '/' . $_SESSION['current_employeeid'])){
 if(isset($_POST['submit'])){
     $pp = $_FILES['preselectbtn'];
     $employee_id = $_SESSION['current_employeeid'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname = $_POST['lastname'];
+    $namechange = false;
+    $picturechange = false;
+
+    if((!empty($firstname) || $firstname != '') && (!empty($lastname) || $lastname != '')){
+        if($firstname != $_SESSION['current_employeefirst'] || $middlename != $_SESSION['current_employeemiddle'] || $lastname != $_SESSION['current_employeelast']){
+            $updatename = $pdo->prepare("UPDATE users SET firstname = :firstname, middlename = :middlename, lastname = :lastname WHERE employee_id = :employee_id");
+            $updatename->bindParam(':firstname', $firstname);
+            $updatename->bindParam(':middlename', $middlename);
+            $updatename->bindParam(':lastname', $lastname);
+            $updatename->bindParam(':employee_id', $employee_id);
+            $updatename->execute();
+            
+            $namechange = true;
+            $_SESSION['current_employeefirst'] = $firstname;
+            $_SESSION['current_employeemiddle'] = $middlename;
+            $_SESSION['current_employeelast'] = $lastname;
+        }
+    }else{
+        echo "<script>
+            $(document).ready(function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Empty Fields',
+                    html: 'Make sure at least first and last name are filled in.',
+                    confirmButtonText: 'Proceed',
+                    showConfirmButton: true,
+                    color: 'red',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    confirmButtonColor: 'red',
+                    
+                }).then(() => {
+                    window.location.href = 'profile.php';
+                });
+            });
+            </script>";
+    }
 
     if(isset($_FILES['preselectbtn'])){
         $fileName = $_FILES['preselectbtn']['name'];
@@ -42,27 +83,70 @@ if(isset($_POST['submit'])){
             $updatepp->execute();
 
             $_SESSION['current_employeepp'] = $newfileName;
-
-            echo "<script>
-                $(document).ready(function () {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Profile Picture Updated',
-                        html: 'You have successfully changed your profile picture!',
-                        confirmButtonText: 'Proceed',
-                        showConfirmButton: true,
-                        color: 'green',
-                        allowOutsideClick: false,
-                        allowEscapeKey: false,
-                        allowEnterKey: false,
-                        confirmButtonColor: 'green',
-                        
-                    }).then(() => {
-                        window.location.href = 'profile.php';
-                    });
-                });
-                </script>";
+            $picturechange = true;
         }
+    }
+
+    if($namechange && $picturechange){
+        echo "<script>
+        $(document).ready(function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Profile Updated',
+                html: 'Your profile changes has been saved!',
+                confirmButtonText: 'Proceed',
+                showConfirmButton: true,
+                color: 'green',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                confirmButtonColor: 'green',
+                
+            }).then(() => {
+                window.location.href = 'profile.php';
+            });
+        });
+        </script>";
+    }elseif($namechange && !$picturechange){
+        echo "<script>
+        $(document).ready(function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Name Updated',
+                html: 'Successfully saved your name changes!',
+                confirmButtonText: 'Proceed',
+                showConfirmButton: true,
+                color: 'green',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                confirmButtonColor: 'green',
+                
+            }).then(() => {
+                window.location.href = 'profile.php';
+            });
+        });
+        </script>";
+    }elseif(!$namechange && $picturechange){
+        echo "<script>
+        $(document).ready(function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Picture Updated',
+                html: 'Successfully saved your profile picture!',
+                confirmButtonText: 'Proceed',
+                showConfirmButton: true,
+                color: 'green',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                confirmButtonColor: 'green',
+                
+            }).then(() => {
+                window.location.href = 'profile.php';
+            });
+        });
+        </script>";
     }
 }
 
@@ -117,14 +201,19 @@ function generateFilename($extension) {
             </div>
         </div>
         <div class="userinfo">
-            <div class="name">
-            <input type="text" name="fullname" id="fullname" value="<?php echo $_SESSION['current_employeefullname'] ?>">
+            <div class="fields">
+                <input type="text" class="legends" value="FIRST NAME" disabled>
+                <input type="text" class="name" name="firstname" id="firstname" autocomplete="off" spellcheck="false" value="<?php echo $row['firstname']; ?>">
             </div>
-            <div class="username">
-            <input type="text" name="username" id="username" value="<?php echo $_SESSION['current_employeeid'] ?>">
+
+            <div class="fields">
+                <input type="text" class="legends" value="MIDDLE NAME" disabled>
+                <input type="text" class="name" name="middlename" id="middlename" autocomplete="off" spellcheck="false" value="<?php echo $row['middlename']; ?>">
             </div>
-            <div class="email">
-            <input type="email" name="email" id="email" value="<?php echo $_SESSION['current_employeeemail'] ?>">
+
+            <div class="fields">
+                <input type="text" class="legends" value="LAST NAME" disabled>
+                <input type="text" class="name" name="lastname" id="lastname" autocomplete="off" spellcheck="false" value="<?php echo $row['lastname']; ?>">
             </div>
         </div>
         <div class="savebtndiv">
