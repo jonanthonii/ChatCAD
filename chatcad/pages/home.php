@@ -38,6 +38,9 @@ if(isset($_POST['send'])){
             $stmt->bindParam(':replyto_firstname', $replyto_firstname);
             $stmt->execute();
 
+            unset($_SESSION['replyto_message']);
+            unset($_SESSION['replyto_firstname']);
+
             header("Location: home.php");
             ob_flush();
             ob_clean();
