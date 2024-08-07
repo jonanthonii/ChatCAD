@@ -16,6 +16,35 @@ echo '<script src="../sweetalert2/dist/sweetalert2.all.min.js"></script>';
 echo '<link rel="stylesheet" href="../sweetalert2/dist/sweetalert2.min.css">';
 echo '<script src="../jquery-3.7.1.js"></script>';
 
+use Oracle\Oci\Common\Region;
+use Oracle\Oci\ObjectStorage\ObjectStorageClient;
+use Oracle\Oci\Common\Auth\SimpleAuthenticationDetailsProviderBuilder;
+use Oracle\Oci\ObjectStorage\Model\PutObjectRequest;
+
+// Your Oracle Cloud credentials and configuration
+$region = 'ap-tokyo-1'; // Replace with your region
+$namespaceName = 'nr7audjfcmkp'; // Replace with your namespace
+$bucketName = 'QMS'; // Replace with your bucket name
+
+$tenancyId = 'ocid1.tenancy.oc1..aaaaaaaaxffcmy2gt6ciqgxj624h2mago4oawx436hxhsuiczzt7tho6gnyq';
+$userId = 'ocid1.user.oc1..aaaaaaaa3exinwywbiguoom4xkxfu5lwpinbf3tyf5byw7bonzkqijr3s5ka';
+$fingerprint = 'e8:16:93:89:db:47:cf:35:8f:fb:55:0b:d6:79:4a:7c';
+$privateKeyFile = '/path/to/your/private_key.pem'; // Path to your .pem file
+
+// compartmentOCID= 'ocid1.compartment.oc1..aaaaaaaaxgdsmsb25llh4klwbb5ccop24skvnnfoxgxvinvevsggb4krxy7q'
+
+// Authentication
+$provider = SimpleAuthenticationDetailsProviderBuilder::builder()
+    ->region(Region::fromRegionId($region))
+    ->tenancyId($tenancyId)
+    ->userId($userId)
+    ->fingerprint($fingerprint)
+    ->privateKeyFile($privateKeyFile)
+    ->build();
+
+// Create an Object Storage client
+$objectStorageClient = new ObjectStorageClient($provider);
+
 $uploadDir = '../users/';
 
 if(!file_exists($uploadDir . '/' . $_SESSION['current_employeeid'])){

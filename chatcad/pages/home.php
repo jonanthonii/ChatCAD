@@ -287,8 +287,9 @@ if(isset($_POST['send'])){
                 <?php } ?>
                     <div class="typebox">
                         <!-- <input type="text" autocomplete="off" name="message" autofocus value="<?php if(isset($_POST['message'])){ echo $_POST['message']; }?>"> -->
-                        <button type="submit" id="sendbtn" name="send">Send</button>
+                        
                         <input type="text" autocomplete="off" id="message-input" name="message" autofocus value="<?php if(isset($_POST['message'])){ echo $_POST['message']; }?>">
+                        <button type="submit" id="sendbtn" name="send">Send</button>
                     </div>
                 </form>
             </div>
